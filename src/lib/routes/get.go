@@ -7,7 +7,9 @@ import (
 func getApis() Apis {
 	var apis Apis
 
+	// ************** Product ************** //
 	apis = append(apis, Api{
+		Method:   "GET",
 		Path:     "/products",
 		Function: cProduct.GetProducts,
 	})

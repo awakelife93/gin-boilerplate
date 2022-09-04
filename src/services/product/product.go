@@ -1,6 +1,6 @@
 package product
 
 // todo: get neo4j nodes
-func GetProducts() int {
+func GetProducts() interface{} {
 	return 123
 }
