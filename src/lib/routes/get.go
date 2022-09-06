@@ -1,17 +1,25 @@
 package routes
 
 import (
-	cProduct "github.com/awakelife93/gin-boilerplate/src/controllers/product"
+	"github.com/awakelife93/gin-boilerplate/src/controllers"
+	"github.com/awakelife93/gin-boilerplate/src/lib"
 )
 
-func getApis() Apis {
-	var apis Apis
+func getApis() lib.Apis {
+	var apis lib.Apis
 
 	// ************** Product ************** //
-	apis = append(apis, Api{
+	apis = append(apis, lib.Api{
 		Method:   "GET",
 		Path:     "/products",
-		Function: cProduct.GetProducts,
+		Function: controllers.GetProducts,
+	})
+
+	// ************** Node ************** //
+	apis = append(apis, lib.Api{
+		Method:   "GET",
+		Path:     "/nodes",
+		Function: controllers.GetProducts,
 	})
 
 	return apis

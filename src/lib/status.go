@@ -1,4 +1,4 @@
-package protocol
+package lib
 
 const (
 	FORBIDDEN_STATUS             int = 403
