@@ -19,7 +19,7 @@ func getApis() lib.Apis {
 	apis = append(apis, lib.Api{
 		Method:   "GET",
 		Path:     "/nodes",
-		Function: controllers.GetProducts,
+		Function: controllers.GetNodes,
 	})
 
 	return apis
