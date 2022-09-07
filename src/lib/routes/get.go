@@ -6,18 +6,19 @@ import (
 )
 
 func getApis() lib.Apis {
+	const method string = "GET"
 	var apis lib.Apis
 
 	// ************** Product ************** //
 	apis = append(apis, lib.Api{
-		Method:   "GET",
+		Method:   method,
 		Path:     "/products",
 		Function: controllers.GetProducts,
 	})
 
 	// ************** Node ************** //
 	apis = append(apis, lib.Api{
-		Method:   "GET",
+		Method:   method,
 		Path:     "/nodes",
 		Function: controllers.GetNodes,
 	})
