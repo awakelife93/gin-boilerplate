@@ -2,6 +2,7 @@
 __debug_bin
 
 # Environment
+.env
 env
 
 # Binaries for programs and plugins
