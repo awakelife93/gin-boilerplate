@@ -6,17 +6,36 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func generateGroupByApis(engine *gin.Engine) {
+	// * you can write APIs for each group here.
+	// * sample group & api
+	v1 := engine.Group("/v1")
+
+	v1.GET("/sample", func(context *gin.Context) {
+		lib.Response(context, lib.Result{
+			Message: lib.OK_MESSAGE,
+			Status:  lib.OK_STATUS,
+			Data:    nil,
+		})
+	})
+}
+
 func initialize(engine *gin.Engine) *gin.Engine {
 
-	// todo: add restful apis
+	// * if you declare an api for each group
+	generateGroupByApis(engine)
+
 	var apis []lib.Api = append(getApis())
 
 	for _, api := range apis {
-		engine.Handle(api.Method, api.Path, func(context *gin.Context) {
+		// * protected overwritten api
+		thisApi := api
 
-			item := middleware.GenerateRequestItem(api.Method, context.Request)
+		engine.Handle(thisApi.Method, thisApi.Path, func(context *gin.Context) {
 
-			result, error := api.Function(item)
+			item := middleware.GenerateRequestItem(thisApi.Method, context.Request)
+
+			result, error := thisApi.Function(item)
 
 			if error != nil {
 				var status int = lib.INTERNAL_SERVER_ERROR_STATUS
