@@ -1,8 +1,9 @@
 package services
 
-import "github.com/awakelife93/gin-boilerplate/src/lib"
+import (
+	"github.com/awakelife93/gin-boilerplate/src/lib"
+)
 
-// todo: get neo4j nodes
 func GetProducts() (interface{}, *lib.ErrorResult) {
-	return 123, nil
+	return nil, &lib.ErrorResult{}
 }
