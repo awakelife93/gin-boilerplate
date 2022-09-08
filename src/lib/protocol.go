@@ -34,9 +34,9 @@ func Response(c *gin.Context, params Result) {
 }
 
 func ErrorResponse(c *gin.Context, params ErrorResult) {
-	c.JSON(*params.Status, Result{
-		Message: *params.Message,
-		Status:  *params.Status,
+	c.JSON(*params.Status, ErrorResult{
+		Message: params.Message,
+		Status:  params.Status,
 		Data:    params.Data,
 	})
 }
