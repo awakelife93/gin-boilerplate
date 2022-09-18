@@ -29,13 +29,13 @@ func init() {
 func main() {
 	// * ReleaseMode (release) or DebugMode (debug)
 	// * default DebugMode (debug)
-	var mode string = os.Getenv("env")
+	mode := os.Getenv("env")
 
 	if mode == "" {
 		mode = gin.DebugMode
 	}
 
-	var engine *gin.Engine = lib.CreateEngine(mode)
+	engine := lib.CreateEngine(mode)
 	engine = routes.Initialize(engine)
 	engine = middleware.Initialize(engine)
 

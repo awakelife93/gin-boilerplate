@@ -25,7 +25,7 @@ func initialize(engine *gin.Engine) *gin.Engine {
 	// * if you declare an api for each group
 	generateGroupByApis(engine)
 
-	var apis []lib.Api = append(getApis())
+	apis := append(getApis())
 
 	for _, api := range apis {
 		// * protected overwritten api
@@ -38,8 +38,8 @@ func initialize(engine *gin.Engine) *gin.Engine {
 			result, error := thisApi.Function(item)
 
 			if error != nil {
-				var status int = lib.INTERNAL_SERVER_ERROR_STATUS
-				var message string = lib.INTERNAL_SERVER_ERROR_MESSAGE
+				status := lib.INTERNAL_SERVER_ERROR_STATUS
+				message := lib.INTERNAL_SERVER_ERROR_MESSAGE
 
 				if error.Status != nil {
 					status = *error.Status
