@@ -13,7 +13,6 @@ func defaultSetupMiddleware(engine *gin.Engine) {
 	engine.Use(gin.Recovery())
 }
 
-func Initialize(engine *gin.Engine) *gin.Engine {
+func Initialize(engine *gin.Engine) {
 	defaultSetupMiddleware(engine)
-	return engine
 }

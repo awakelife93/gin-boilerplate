@@ -69,6 +69,6 @@ func initialize(engine *gin.Engine) *gin.Engine {
 	return engine
 }
 
-func Initialize(engine *gin.Engine) *gin.Engine {
-	return initialize(engine)
+func Initialize(engine *gin.Engine) {
+	initialize(engine)
 }

@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/awakelife93/gin-boilerplate/src/lib"
 	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
 	"github.com/awakelife93/gin-boilerplate/src/lib/routes"
 	"github.com/gin-gonic/gin"
@@ -21,12 +20,7 @@ func loadEnvironmentFile() {
 	}
 }
 
-// * pre loading application level env
-func init() {
-	loadEnvironmentFile()
-}
-
-func main() {
+func setModeHandler() {
 	// * ReleaseMode (release) or DebugMode (debug)
 	// * default DebugMode (debug)
 	mode := os.Getenv("env")
@@ -35,9 +29,24 @@ func main() {
 		mode = gin.DebugMode
 	}
 
-	engine := lib.CreateEngine(mode)
-	engine = routes.Initialize(engine)
-	engine = middleware.Initialize(engine)
+	if mode == gin.DebugMode {
+		gin.ForceConsoleColor()
+	} else {
+		gin.DisableConsoleColor()
+	}
+
+	gin.SetMode(mode)
+}
+
+func init() {
+	loadEnvironmentFile()
+	setModeHandler()
+}
+
+func main() {
+	engine := gin.Default()
+	routes.Initialize(engine)
+	middleware.Initialize(engine)
 
 	fmt.Println("Start Gin Application")
 	engine.Run(":8080")
