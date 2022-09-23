@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/awakelife93/gin-boilerplate/src/lib"
 	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
+	"github.com/awakelife93/gin-boilerplate/src/lib/structures"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,7 +13,7 @@ func generateGroupByApis(engine *gin.Engine) {
 	v1 := engine.Group("/v1")
 
 	v1.GET("/sample", func(context *gin.Context) {
-		lib.Response(context, lib.Result{
+		lib.Response(context, structures.Result{
 			Message: lib.OK_MESSAGE,
 			Status:  lib.OK_STATUS,
 			Data:    nil,
@@ -49,7 +50,7 @@ func initialize(engine *gin.Engine) *gin.Engine {
 					message = *error.Message
 				}
 
-				lib.ErrorResponse(context, lib.ErrorResult{
+				lib.ErrorResponse(context, structures.ErrorResult{
 					Message: &message,
 					Status:  &status,
 					Data:    result,
@@ -58,7 +59,7 @@ func initialize(engine *gin.Engine) *gin.Engine {
 				return
 			}
 
-			lib.Response(context, lib.Result{
+			lib.Response(context, structures.Result{
 				Message: lib.OK_MESSAGE,
 				Status:  lib.OK_STATUS,
 				Data:    result,

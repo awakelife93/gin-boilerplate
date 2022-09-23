@@ -3,20 +3,21 @@ package middleware
 import (
 	"net/http"
 
+	"github.com/awakelife93/gin-boilerplate/src/lib/structures"
 	"github.com/awakelife93/gin-boilerplate/src/utils"
 )
 
-func GenerateRequestItem(method string, request *http.Request) RequestItem {
+func GenerateRequestItem(method string, request *http.Request) structures.RequestItem {
 	if method == "GET" || method == "DELETE" {
-		return RequestItem{
-			item: utils.GenerateQueryItem(
+		return structures.RequestItem{
+			Item: utils.GenerateQueryItem(
 				request.URL.Query(),
 			),
 		}
 	}
 
-	return RequestItem{
-		item: utils.GenerateBodyItem(
+	return structures.RequestItem{
+		Item: utils.GenerateBodyItem(
 			request.Body,
 		),
 	}

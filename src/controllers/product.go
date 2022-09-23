@@ -1,12 +1,11 @@
 package controllers
 
 import (
-	"github.com/awakelife93/gin-boilerplate/src/lib"
-	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
+	"github.com/awakelife93/gin-boilerplate/src/lib/structures"
 	"github.com/awakelife93/gin-boilerplate/src/services"
 )
 
-func GetProducts(item middleware.RequestItem) (interface{}, *lib.ErrorResult) {
+func GetProducts(item structures.RequestItem) (interface{}, *structures.ErrorResult) {
 	result, error := services.GetProducts()
 	return result, error
 }
