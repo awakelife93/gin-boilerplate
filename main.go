@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/awakelife93/gin-boilerplate/src/lib/database"
 	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
 	"github.com/awakelife93/gin-boilerplate/src/lib/routes"
 	"github.com/gin-gonic/gin"
@@ -45,7 +46,14 @@ func init() {
 
 func main() {
 	engine := gin.Default()
+
+	// * initialize database
+	database.Initialize()
+
+	// * initialize route
 	routes.Initialize(engine)
+
+	// * initialize middleware
 	middleware.Initialize(engine)
 
 	fmt.Println("Start Gin Application")
