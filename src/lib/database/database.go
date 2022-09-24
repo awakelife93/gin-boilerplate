@@ -59,7 +59,7 @@ func Initialize() {
 	migration()
 }
 
-func Database() *gorm.DB {
+func GetDatabase() *gorm.DB {
 	if database == nil {
 		panic("Database is Nil")
 	}
