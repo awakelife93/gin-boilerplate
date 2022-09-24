@@ -5,7 +5,7 @@
 ### Description
 
 ```
-1. It's currently under development.
+1. Common preprocessing is handled by middleware. (src/lib/middleware)
 ```
 
 ## Author
