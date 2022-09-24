@@ -8,6 +8,7 @@ import (
 	"github.com/awakelife93/gin-boilerplate/src/lib/database"
 	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
 	"github.com/awakelife93/gin-boilerplate/src/lib/routes"
+	"github.com/awakelife93/gin-boilerplate/src/repositories"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -49,6 +50,9 @@ func main() {
 
 	// * initialize database
 	database.Initialize()
+
+	// * initialize repositories
+	repositories.Initialize()
 
 	// * initialize route
 	routes.Initialize(engine)
