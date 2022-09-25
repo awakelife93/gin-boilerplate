@@ -8,7 +8,7 @@ import (
 
 func GenerateSampleData() {
 
-	var products = []models.Product{}
+	var products []models.Product
 	GetDatabase().Find(&products)
 
 	if len(products) < 1 {

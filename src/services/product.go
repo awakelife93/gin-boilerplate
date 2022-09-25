@@ -7,7 +7,7 @@ import (
 )
 
 func GetProducts() (interface{}, *structures.ErrorResult) {
-	var products models.Product
+	var products []models.Product
 	repositories.ProductManager().Find(&products)
 	return products, nil
 }
