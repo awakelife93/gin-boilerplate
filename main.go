@@ -51,6 +51,9 @@ func main() {
 	// * initialize database
 	database.Initialize()
 
+	// * initialize database
+	database.GenerateSampleData()
+
 	// * initialize repositories
 	repositories.Initialize()
 
