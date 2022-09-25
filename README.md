@@ -6,6 +6,7 @@
 
 ```
 1. Common preprocessing is handled by middleware. (src/lib/middleware)
+2. When adding an api, please append to the apis variable. (src/lib/routes/route.go)
 ```
 
 ## Author
