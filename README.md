@@ -19,6 +19,7 @@ Author: Hyunwoo Park
 ## Getting Started
 
 ```
+1. go run main.go
 ```
 
 #
