@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/awakelife93/gin-boilerplate/src/config"
 	"github.com/awakelife93/gin-boilerplate/src/lib/database"
 	"github.com/awakelife93/gin-boilerplate/src/lib/middleware"
 	"github.com/awakelife93/gin-boilerplate/src/lib/routes"
@@ -41,6 +42,7 @@ func setModeHandler() {
 }
 
 func init() {
+	config.Initialize()
 	loadEnvironmentFile()
 	setModeHandler()
 }
