@@ -10,11 +10,19 @@ func getApis() structures.Apis {
 	var apis structures.Apis
 
 	// ************** Product ************** //
-	apis = append(apis, structures.Api{
-		Method:   method,
-		Path:     "/products",
-		Function: controllers.GetProducts,
-	})
+	apis = append(
+		apis,
+		structures.Api{
+			Method:   method,
+			Path:     "/products",
+			Function: controllers.GetProducts,
+		},
+		structures.Api{
+			Method:   method,
+			Path:     "/products/:requestId",
+			Function: controllers.GetProduct,
+		},
+	)
 
 	return apis
 }
