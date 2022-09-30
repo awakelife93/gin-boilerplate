@@ -34,7 +34,7 @@ func initialize(engine *gin.Engine) *gin.Engine {
 
 		engine.Handle(thisApi.Method, thisApi.Path, func(context *gin.Context) {
 
-			item := middleware.GenerateRequestItem(thisApi.Method, context.Request)
+			item := middleware.GenerateRequestItem(thisApi.Method, context)
 
 			result, error := thisApi.Function(item)
 
