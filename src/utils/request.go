@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"net/url"
+
+	"github.com/awakelife93/gin-boilerplate/src/config"
 )
 
 func GenerateBodyItem(body io.ReadCloser) interface{} {
@@ -22,8 +24,12 @@ func GenerateBodyItem(body io.ReadCloser) interface{} {
 	return result
 }
 
-func GenerateQueryItem(query url.Values) map[string]interface{} {
+func GenerateQueryItem(query url.Values, params string) map[string]interface{} {
 	var result = make(map[string]interface{})
+
+	if params != "" {
+		result[config.RequestIdFieldName()] = params
+	}
 
 	for key := range query {
 		result[key] = query.Get(key)
