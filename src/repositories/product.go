@@ -12,7 +12,6 @@ var productManager *gorm.DB = nil
 
 func ProductManager() *gorm.DB {
 	if productManager == nil {
-		// ? setupProductManager() or throw error?
 		fmt.Println("productManager is nil")
 	}
 

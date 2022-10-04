@@ -32,6 +32,7 @@ func GetStringToInt(value string, defaultValue int) int {
 
 func GetRequestId(item interface{}) int {
 	_item := item.(map[string]interface{})
+
 	if len(_item) < 1 {
 		fmt.Println("GetRequestId Error ========> item is empty.")
 	}
