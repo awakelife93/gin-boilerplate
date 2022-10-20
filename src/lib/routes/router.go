@@ -26,7 +26,7 @@ func initialize(engine *gin.Engine) *gin.Engine {
 	// * if you declare an api for each group
 	generateGroupByApis(engine)
 
-	apis := append(getApis())
+	apis := append(getApis(), patchApis()...)
 
 	for _, api := range apis {
 		// * protected overwritten api
