@@ -31,3 +31,34 @@ func GetProduct(id int) (*models.Product, *structures.ErrorResult) {
 
 	return &product, nil
 }
+
+func UpdateProduct(id int, item *models.Product) (*models.Product, *structures.ErrorResult) {
+	product, getProductError := GetProduct(id)
+
+	if getProductError != nil {
+		return nil, getProductError
+	}
+
+	// todo: item 데이터 구조를 모델이 아닌 json 구조로...
+	if item.Name != "" {
+		product.Name = item.Name
+	}
+
+	if item.Price != 0 {
+		product.Price = item.Price
+	}
+
+	sqlError := repositories.ProductManager().Updates(&product).Error
+
+	if sqlError != nil {
+		message := sqlError.Error()
+		status := lib.INTERNAL_SERVER_ERROR_STATUS
+
+		return nil, &structures.ErrorResult{
+			Message: &message,
+			Status:  &status,
+		}
+	}
+
+	return product, nil
+}
