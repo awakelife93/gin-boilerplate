@@ -1,7 +1,7 @@
 package structures
 
 type RequestItem struct {
-	Item interface{}
+	Item map[string]interface{}
 }
 
 type Api struct {
