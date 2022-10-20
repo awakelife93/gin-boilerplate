@@ -9,8 +9,8 @@ import (
 	"github.com/awakelife93/gin-boilerplate/src/config"
 )
 
-func GenerateBodyItem(body io.ReadCloser) interface{} {
-	var result interface{}
+func GenerateBodyItem(body io.ReadCloser, params string) map[string]interface{} {
+	var result map[string]interface{}
 
 	decoder := json.NewDecoder(body)
 	decoder.DisallowUnknownFields()
@@ -19,6 +19,10 @@ func GenerateBodyItem(body io.ReadCloser) interface{} {
 	if error != nil {
 		fmt.Println("Request DecodeBody Error ========>", error.Error())
 		return nil
+	}
+
+	if params != "" {
+		result[config.RequestIdFieldName()] = params
 	}
 
 	return result

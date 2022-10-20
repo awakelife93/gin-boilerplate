@@ -21,6 +21,7 @@ func GenerateRequestItem(method string, context *gin.Context) structures.Request
 	return structures.RequestItem{
 		Item: utils.GenerateBodyItem(
 			context.Request.Body,
+			context.Params.ByName(config.RequestIdFieldName()),
 		),
 	}
 }
